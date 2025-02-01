@@ -1,6 +1,13 @@
-const env = 'browser';
-const ImageData = self.ImageData;
-const DOMImage = self.Image;
+let env;
+let ImageData;
+let DOMImage;
+import axios from 'axios';
+if (typeof self !== 'undefined' && self.document) {
+  // 浏览器环境
+  env = 'browser';
+  ImageData = self.ImageData;
+  DOMImage = self.Image;
+}
 
 export function createCanvas(width, height) {
   let canvas = self.document.createElement('canvas');
@@ -10,19 +17,11 @@ export function createCanvas(width, height) {
 }
 
 export function fetchBinary(url, { withCredentials = false } = {}) {
-  return new Promise(function (resolve, reject) {
-    let xhr = new self.XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'arraybuffer';
-    xhr.withCredentials = withCredentials;
-
-    xhr.onload = function (e) {
-      if (this.status !== 200) reject(e);
-      else resolve(this.response);
-    };
-    xhr.onerror = reject;
-    xhr.send();
-  });
+  return axios.get(url, { responseType: 'arraybuffer', withCredentials })
+    .then(response => response.data)
+    .catch(error => {
+      throw new Error(`Failed to fetch binary data: ${error.message}`);
+    });
 }
 
 export function createWriteStream() {

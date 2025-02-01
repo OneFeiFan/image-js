@@ -79,6 +79,7 @@
   },
   "dependencies": {
     "@swiftcarrot/color-fns": "^3.2.0",
+    "axios": "^1.7.9",
     "blob-util": "^2.0.2",
     "canny-edge-detector": "^1.0.0",
     "fast-bmp": "^2.0.1",

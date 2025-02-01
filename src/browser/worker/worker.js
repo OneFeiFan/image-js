@@ -1,11 +1,10 @@
-import WorkerManager from 'web-worker-manager';
-
 import extend from './extend';
 
 class Worker {
   constructor() {
     this._url = null;
     this._deps = [null];
+    this._workerManager = null;
   }
   checkUrl() {
     if (this._url === null) {
@@ -31,8 +30,15 @@ class Worker {
       if (!manager) {
         this.checkUrl();
         url = this.url;
-        manager = new WorkerManager(method.work, { deps: url });
-        runner.manager = manager;
+
+        // 动态导入 WorkerManager
+        import('web-worker-manager').then((module) => {
+          const WorkerManager = module.default;
+          manager = new WorkerManager(method.work, { deps: url });
+          runner.manager = manager;
+        }).catch((error) => {
+          console.error('Failed to import WorkerManager:', error);
+        });
       }
       return method.run.call(runner, ...args);
     }
@@ -51,3 +57,4 @@ class Worker {
 extend(Worker);
 
 export default new Worker();
+
