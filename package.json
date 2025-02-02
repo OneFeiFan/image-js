@@ -102,8 +102,7 @@
     "new-array": "^1.0.0",
     "robust-point-in-polygon": "^1.0.3",
     "tiff": "^5.0.2",
-    "web-worker-manager": "^0.2.0",
-    "xhr2": "^0.2.1"
+    "web-worker-manager": "^0.2.0"
   },
   "engines": {
     "node": ">= 16.0.0"
