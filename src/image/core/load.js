@@ -50,6 +50,7 @@ export default function load(image, options) {
 function loadBinary(image, base64Url, ignorePalette) {
   const type = imageType(image);
   if (type) {
+    console.log(type);
     switch (type.mime) {
       case 'image/png':
         return loadPNG(image);
