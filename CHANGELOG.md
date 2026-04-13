@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.37.0](https://www.github.com/image-js/image-js/compare/v0.36.1...v0.37.0) (2025-04-15)
+
+
+### Features
+
+* add filledSurface on ROI ([019c71a](https://www.github.com/image-js/image-js/commit/019c71ab2b64217564b3eae8fd731b80c743ff3c))
+* ROI.toJSON expose hullSurface and hullPerimeter ([85471eb](https://www.github.com/image-js/image-js/commit/85471eb1318846a22563346680de9886e1c42bfc))
+
+### [0.36.1](https://www.github.com/image-js/image-js/compare/v0.36.0...v0.36.1) (2025-04-09)
+
+
+### Bug Fixes
+
+* add types and documentation for cannyEdge parameters ([f73f9b4](https://www.github.com/image-js/image-js/commit/f73f9b4864029eae39f8dd3412d3991b84798fab))
+
 ## [0.36.0](https://www.github.com/image-js/image-js/compare/v0.35.6...v0.36.0) (2024-12-26)
 
 

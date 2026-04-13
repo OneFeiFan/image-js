@@ -196,7 +196,11 @@ export declare class Image {
     options?: { border?: Array<number> },
   ): Array<number>;
 
-  // cannyEdge
+  cannyEdge(options?: {
+    gaussianBlur?: number;
+    lowThreshold?: number;
+    highThreshold?: number;
+  }): Image;
   convolution(kernel: Kernel, options?: ConvolutionOptions): Image;
   extract(
     mask: Image,
@@ -497,6 +501,9 @@ export declare class Roi {
     height: number;
     width: number;
     surface: number;
+    filledSurface: number;
+    hullSurface: number;
+    hullPerimeter: number;
     mbrWidth: number;
     mbrHeight: number;
     mbrSurface: number;
